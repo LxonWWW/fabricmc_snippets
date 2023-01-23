@@ -18,11 +18,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ClientPlayNetworkHandler.class)
 public abstract class onChatReceivedMixin {
-    @Shadow public abstract void sendChatMessage(String content);
-
     @Inject(method = "onGameMessage", at = @At("RETURN"), cancellable = false)
     public void onGameMessage(GameMessageS2CPacket packet, CallbackInfo ci) {
-		// You can now get the received message with:
-		System.out.println(packet.content().toString());
+	// You can now get the received message with:
+	System.out.println(packet.content().toString());
     }
 }
